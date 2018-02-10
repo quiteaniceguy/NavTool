@@ -16,13 +16,11 @@ public class CameraViewCode extends SurfaceView implements SurfaceHolder.Callbac
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
-    private TYPE
 
     public CameraViewCode(Context context, Camera camera){
         super(context);
 
         mCamera = camera;
-        mAcceler = isHardwareAccelerated();
         mCamera.setDisplayOrientation(90);
         //get the holder and set this class as the callback, so we can get camera data here
         mHolder = getHolder();
@@ -65,7 +63,7 @@ public class CameraViewCode extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         //our app has only one screen, so we'll destroy the camera in the surface
-        //if you are unsing with more screens, please move this code your activity
+        //if you are using with more screens, please move this code your activity
         mCamera.stopPreview();
         mCamera.release();
     }
