@@ -22,7 +22,7 @@ public class CameraView extends AppCompatActivity implements SensorEventListener
     private CameraViewCode mCameraView = null;
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    //final TextView data = (TextView) findViewById(R.id.textView);
+    private TextView data;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,8 @@ public class CameraView extends AppCompatActivity implements SensorEventListener
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+        String message = "Worked";
+        data.setText(message);
 
         try{
             mCamera = Camera.open();//you can use open(int) to use different cameras
@@ -82,7 +84,7 @@ public class CameraView extends AppCompatActivity implements SensorEventListener
             String y = String.valueOf(sensorEvent.values[1]);
             String z = String.valueOf(sensorEvent.values[2]);
             String message = "X position: " + x;
-            //data.setText(message);
+            data.setText(message);
         }
     }
 }
